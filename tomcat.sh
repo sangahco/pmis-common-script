@@ -22,18 +22,21 @@ shutdownScript=$TOMCAT_INSTANCE_HOME/bin/shutdown.sh
 
 if [ -f "$CATALINA_PID" ]; then
     tomcatPID=`cat "$CATALINA_PID"`
-    if [ $(ps -p $tomcatPID | wc -l) > 1 ]; then
+    if [ $(ps -p $tomcatPID | wc -l) -gt 1 ]; then
         echo "Attempting to shutdown Tomcat . . ."
-        $shutdownScript
+        $shutdownScript || true
         sleep 10
 
         echo "Killing Tomcat using process id of $tomcatPID . . ."
         kill -9 $tomcatPID || true
 
         echo "Waiting for process $tomcatPID to end . . ."
-        while ps -p $tomcatPID > /dev/null; do sleep 1; done
+        while [ $(ps -p $tomcatPID | wc -l) -gt 1 ]; do sleep 1; done
         echo "Process $tomcatPID has ended . . ." 
     fi
+	
+	# remove pid file or tomcat will not start
+	rm $CATALINA_PID || true
 fi
 
 echo "Attempting to start Tomcat via $startScript . . ."
