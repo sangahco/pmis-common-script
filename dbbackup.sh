@@ -1,6 +1,10 @@
 #!/bin/sh
 
-# Add the following line to crontab ( to edit crontab use the command: crontab -e )
+# Add the following lines to crontab ( to edit crontab use the command: crontab -e )
+# Change BASH_ENV to the .bashrc file with environment variables to set before the cron jobs start
+#
+# SHELL=/bin/bash
+# BASH_ENV=/home/oracle/.bashrc
 # 05 12 * * * sh /home/sangah/script/dbbackup.sh
 
 echo Starting DB backup...
