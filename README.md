@@ -16,10 +16,10 @@ At the top of the crontab file always put the following lines:
     SHELL=/bin/bash
     BASH_ENV=/home/<USERHERE>/.bashrc
     
-Doing this we tell to crontab that the following scripts have to be run using the bash shell
-and it should use the environment of that user.
+Doing this we tell to crontab that the following scripts have to be run using the `bash` shell
+and it should use the environment in `/home/<USERHERE>/.bashrc`.
 
-Than just add the script you want to schedule the run with:
+Than add the scripts you want to schedule the run with these lines:
 
     # daily schedule
     00 02 * * * /home/oracle/script/dbbackup.sh
