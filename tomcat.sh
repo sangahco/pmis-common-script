@@ -34,9 +34,9 @@ if [ -f "$CATALINA_PID" ]; then
         while [ $(ps -p $tomcatPID | wc -l) -gt 1 ]; do sleep 1; done
         echo "Process $tomcatPID has ended . . ." 
     fi
-	
-	# remove pid file or tomcat will not start
-	rm $CATALINA_PID || true
+
+    # remove pid file or tomcat will not start
+    rm $CATALINA_PID || true
 fi
 
 echo "Attempting to start Tomcat via $startScript . . ."
