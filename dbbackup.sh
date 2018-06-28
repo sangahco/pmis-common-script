@@ -7,8 +7,6 @@
 # BASH_ENV=/home/oracle/.bashrc
 # 05 12 * * * sh /home/sangah/script/dbbackup.sh
 
-set -e
-
 SCRIPT_BASE_PATH=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd $SCRIPT_BASE_PATH
 

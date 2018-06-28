@@ -1,7 +1,5 @@
 #!/bin/sh
 
-set -e
-
 export ORACLE_HOME=${ORACLE_HOME:-/u01/app/oracle/product/11.2.0/dbhome_1}
 export ORACLE_SCHEMA=$2
 export ORACLE_SID=$1
