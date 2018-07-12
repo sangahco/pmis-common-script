@@ -29,7 +29,8 @@ echo ORACLE_SID = %ORACLE_SID%
 echo ORACLE_SCHEMA = %ORACLE_SCHEMA%
 
 echo Backup up database...
-expdp %ORACLE_ADMIN_USER%/%ORACLE_ADMIN_PWD% directory=DATA_PUMP_DIR schemas=%ORACLE_SCHEMA% dumpfile=%DUMPFILE% logfile=%LOGFILE% rows=y consistent=y feedback=1000
+expdp %ORACLE_ADMIN_USER%/%ORACLE_ADMIN_PWD% directory=DATA_PUMP_DIR schemas=%ORACLE_SCHEMA% dumpfile=%DUMPFILE% logfile=%LOGFILE% rows=y feedback=1000
+rem consistent=y this option can cause error ORA-00922
 
 echo Compressing backup files...
 %ZIPCOMMAND% a "%EXPORT_FOLDER%\%BACKUP_DATE%-%ORACLE_SCHEMA%_export.7z" "%EXPORT_FOLDER%\%BACKUP_DATE%-%BACKUP_PREFIX%*"
