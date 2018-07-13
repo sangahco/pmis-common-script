@@ -13,7 +13,7 @@ DATE=$(date +"%Y%m%d_%H%M")
 $ORACLE_HOME/bin/expdp $ORACLE_USER/$ORACLE_PASSWORD \
 directory=$ORACLE_DUMP_DIRECTORY schemas=${ORACLE_SCHEMA} \
 dumpfile=$DATE-${ORACLE_SCHEMA}_export.dmp \
-logfile=$DATE-${ORACLE_SCHEMA}_export.log rows=y feedback=1000
+logfile=$DATE-${ORACLE_SCHEMA}_export.log content=ALL status=30
 # consistent=y this option can cause error ORA-00922
 
 echo "Export folder: $EXPORT_FOLDER"
