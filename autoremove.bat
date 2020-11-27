@@ -1,0 +1,1 @@
+ForFiles /p "C:\path\to\folder" /s /d -30 /c "cmd /c del /q @file"
