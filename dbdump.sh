@@ -25,6 +25,8 @@ echo "Oracle home: $ORACLE_HOME"
 echo "-----------------------------------------"
 
 cd $EXPORT_FOLDER
+# c = create
+# j = bzip2 compression
 tar cjf $DATE-${ORACLE_SCHEMA}_export.tar.bz2 \
 $DATE-${ORACLE_SCHEMA}_export.dmp \
 $DATE-${ORACLE_SCHEMA}_export.log

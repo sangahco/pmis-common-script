@@ -5,5 +5,5 @@ DATE=$(date +"%Y%m%d")
 
 cd "${SCRIPT_BASE_PATH}"
 echo "Archiving logs in ${SCRIPT_BASE_PATH}..."
-find . -name \*.log -type f -mtime +7 | xargs tar -rf weekly_log_$DATE.tar
-find . -name \*.log -mtime +7 -exec rm {} \;
+find ./$3 -name "$1" -type f -mtime +7 | xargs tar --bzip2 --create -f weekly_$2_log_$DATE.tar.bz2
+find ./$3 -name "$1" -mtime +7 -exec rm {} \;
