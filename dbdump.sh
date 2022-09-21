@@ -5,12 +5,10 @@ export ORACLE_SCHEMA=$2
 export ORACLE_SID=$1
 
 EXPORT_FOLDER=/home/sangah/dbdump
-ORACLE_USER=
-ORACLE_PASSWORD=
 ORACLE_DUMP_DIRECTORY=DATA_PUMP_DIR
 DATE=$(date +"%Y%m%d_%H%M")
 
-$ORACLE_HOME/bin/expdp $ORACLE_USER/$ORACLE_PASSWORD \
+$ORACLE_HOME/bin/expdp \"/ as sysdba\" \
 directory=$ORACLE_DUMP_DIRECTORY schemas=${ORACLE_SCHEMA} \
 dumpfile=$DATE-${ORACLE_SCHEMA}_export.dmp \
 logfile=$DATE-${ORACLE_SCHEMA}_export.log content=ALL status=30
