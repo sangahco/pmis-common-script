@@ -1,4 +1,6 @@
 rem Just change the service name and should work.
+rem for net drive edms
+rem edms.PathRoot=\\\\<IP>\\<FOLDER>\\edms
 
 SET SERVICE=tomcat7
 

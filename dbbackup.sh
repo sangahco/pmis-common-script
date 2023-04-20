@@ -12,3 +12,6 @@ cd $SCRIPT_BASE_PATH
 
 echo Starting DB backup...
 sh dbdump.sh AL32UTF8 TEST
+
+# when running with root user
+# su - oracle -c '/<full path>/dbdump.sh AL32UTF8 TEST'
