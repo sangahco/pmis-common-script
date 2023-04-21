@@ -9,7 +9,7 @@ ORACLE_DUMP_DIRECTORY=DATA_PUMP_DIR
 DATE=$(date +"%Y%m%d_%H%M")
 
 echo -ne '\n' | $ORACLE_HOME/bin/expdp \"/ as sysdba\" \
-directory=$ORACLE_DUMP_DIRECTORY schemas=${ORACLE_SCHEMA} \
+directory=$ORACLE_DUMP_DIRECTORY \
 dumpfile=$DATE-${ORACLE_SCHEMA}_export.dmp \
 logfile=$DATE-${ORACLE_SCHEMA}_export.log \
 FULL=YES
