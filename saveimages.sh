@@ -15,3 +15,5 @@ docker save registry.sangah.com/spreadjs-designer | gzip > docker-spreadjs-desig
 docker save sangah/web-hub | gzip > docker-web-hub.tar.gz
 docker save sangah/pmis-base | gzip > docker-pmis-base.tar.gz
 docker save hyper/docker-registry-web | gzip > docker-registry-web.tar.gz
+docker save registry.sangah.com/spreadjs-designer:12 | gzip > docker-spreadjs-designer-v12.tar.gz
+

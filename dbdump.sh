@@ -32,3 +32,5 @@ $DATE-${ORACLE_SCHEMA}_export.log
 rm $EXPORT_FOLDER/$DATE-${ORACLE_SCHEMA}_export.dmp $EXPORT_FOLDER/$DATE-${ORACLE_SCHEMA}_export.log
 
 find $EXPORT_FOLDER/*${ORACLE_SCHEMA}_export.tar.bz2 -mtime +15 -delete
+
+$ORACLE_HOME/bin/rman target / nocatalog @delete-archivelog.rmn log=delete-arch.log

@@ -4,6 +4,7 @@ export ORACLE_HOME=${ORACLE_HOME:-/u01/app/oracle/product/11.2.0/dbhome_1}
 export ORACLE_SCHEMA=FULL
 export ORACLE_SID=$1
 
+SCRIPT_BASE_PATH=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 EXPORT_FOLDER=/home/sangah/dbdump
 ORACLE_DUMP_DIRECTORY=DATA_PUMP_DIR
 DATE=$(date +"%Y%m%d_%H%M")
@@ -33,3 +34,7 @@ $DATE-${ORACLE_SCHEMA}_export.log
 rm $EXPORT_FOLDER/$DATE-${ORACLE_SCHEMA}_export.dmp $EXPORT_FOLDER/$DATE-${ORACLE_SCHEMA}_export.log
 
 find $EXPORT_FOLDER/*${ORACLE_SCHEMA}_export.tar.bz2 -mtime +180 -delete
+
+cd $SCRIPT_BASE_PATH
+$ORACLE_HOME/bin/rman target / nocatalog @delete-archivelog.rmn log=delete-arch.log
+#$RMAN_SCRIPT_FOLDER/rmanexec.sh

@@ -1,0 +1,1 @@
+ssh -L 1521:cloudpmis1.ccdekrumjwcq.ap-northeast-2.rds.amazonaws.com:1521 -i aws-dev-ssh.pem ubuntu@10.8.0.1 -N
