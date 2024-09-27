@@ -1,4 +1,10 @@
 # delete old archivelog files
 run {
-  delete noprompt force archivelog all completed before 'sysdate-7';
+  #delete noprompt force archivelog all completed before 'sysdate-7';
+  crosscheck archivelog all;
+  backup archivelog all delete input;
+  crosscheck backup;
+  delete noprompt expired archivelog all;
+  delete noprompt expired backup;
+  delete obsolete;
 }
