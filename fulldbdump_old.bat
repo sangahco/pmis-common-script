@@ -14,9 +14,6 @@ set "ORACLE_SID=%1"
 rem User or scheme name
 set "ORACLE_SCHEMA=%2"
 
-set "ORACLE_ADMIN_USER="
-set "ORACLE_ADMIN_PWD="
-
 rem Change with the oracle dump folder or create a symbolic link somewhere else
 set "EXPORT_FOLDER=D:\dbdump"
 
@@ -31,8 +28,7 @@ echo ORACLE_SID = %ORACLE_SID%
 echo ORACLE_SCHEMA = %ORACLE_SCHEMA%
 
 echo Backup up database...
-rem expdp %ORACLE_ADMIN_USER%/%ORACLE_ADMIN_PWD% directory=DATA_PUMP_DIR schemas=%ORACLE_SCHEMA% dumpfile=%DUMPFILE% logfile=%LOGFILE% content=ALL status=30
-expdp \"/ as sysdba\" directory=DATA_PUMP_DIR schemas=%ORACLE_SCHEMA% dumpfile=%DUMPFILE% logfile=%LOGFILE% content=ALL status=30
+expdp \"/ as sysdba\" directory=DATA_PUMP_DIR dumpfile=%DUMPFILE% logfile=%LOGFILE% content=ALL status=30 version=12 full=yes
 rem consistent=y this option can cause error ORA-00922
 
 echo Compressing backup files...
@@ -43,7 +39,7 @@ del %EXPORT_FOLDER%\%DUMPFILE%
 del %EXPORT_FOLDER%\%LOGFILE%
 
 echo Removing backup older than 15 days...
-forfiles /p "%EXPORT_FOLDER%" /s /m *-%BACKUP_PREFIX%.7z /c "cmd /c Del @path" /d -15
+forfiles /p "%EXPORT_FOLDER%" /s /m *-%BACKUP_PREFIX%.7z /c "cmd /c Del @path" /d -60
 
 echo Script terminated
 
